@@ -3,7 +3,7 @@ var mocha = require('gulp-mocha');
 var jshint = require('gulp-jshint');
 var rename = require('gulp-rename');
 var server = require('gulp-express');
-var encryptoz = require('gulp-encryptoz');
+var encrypt = require("gulp-encrypt");
 
 gulp.task('jshint', function () {
     gulp.src(['./controllers/*.js', './modules/*.js'])
@@ -17,7 +17,7 @@ gulp.task('server', function (cb) {
 
 gulp.task('encrypt', function (cb) {
     gulp.src('./config.js')
-        .pipe(encryptoz({
+        .pipe(encrypt({
             encrypt: true,
             password: process.env.NODE_ENC_KEY
         }))
@@ -26,8 +26,8 @@ gulp.task('encrypt', function (cb) {
 });
 
 gulp.task('decrypt', function (cb) {
-    gulp.src('./configs/config.enc')
-        .pipe(encryptoz({
+    gulp.src('./config.enc')
+        .pipe(encrypt({
             encrypt: false
         }))
         .pipe(rename('./config.js'))
@@ -44,4 +44,4 @@ gulp.task('tests', function (cb) {
         }));
 });
 
-gulp.task('default', ['jshint-controllers', 'server', 'tests']);
+gulp.task('default', ['jshint', 'encrypt', 'server', 'tests']);
