@@ -29,20 +29,20 @@
 
 #### **create a tiny url**
 
-**URL** /experiment/api/v1/shortner/
-**Method:** `POST`
-**Body**
-`{ url: "www.nerd-in-dubai.com" }`
-**Success Response:**
+**URL** /experiment/api/v1/shortner/  
+**Method:** `POST` 
+**Body**  
+`{ url: "www.nerd-in-dubai.com" }`   
+**Success Response:**  
  - **Code:** 201
  - **Content:** `{ code: "ejhhfi4qg" }`
 
 #### **get tiny url**
 
-**URL** /experiment/api/v1/shortner/:code
-**Method:** `GET`
-**Body**
-**Success Response:**
+**URL** /experiment/api/v1/shortner/:code  
+**Method:** `GET`  
+**Body**  
+**Success Response:**  
  - **Code:** 200	
  - **Content:** 
 `{ url : "www.nerd-in-dubai.com" }`
